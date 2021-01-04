@@ -148,12 +148,11 @@ class Shapes3dDataset(data.Dataset):
             data['pointcloud_crop'] = True
         else:
             info = c_idx
-        print(model_path)
-        print(idx)
         for field_name, field in self.fields.items():
             try:
                 field_data = field.load(model_path, idx, info)
             except Exception:
+                print(field_name)
                 if self.no_except:
                     logger.warn(
                         'Error occured when loading field %s of model %s'
