@@ -1,6 +1,5 @@
 method: conv_onet
 data:
-  dataset: MN40
   input_type: pointcloud
   classes: null
   path: data/MN40
