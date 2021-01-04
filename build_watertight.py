@@ -55,6 +55,8 @@ for one_class in all_class:
             file_root = os.path.join(class_root, one_file)
             save_file_root = os.path.join(
                 save_class_root, one_file.replace('off', 'obj'))
+            if os.path.exists(save_file_root.replace('obj', 'off')):
+                continue
             # Manifold can only process obj file
             # so first convert off to obj
             try:
