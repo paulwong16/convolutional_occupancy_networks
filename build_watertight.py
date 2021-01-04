@@ -43,38 +43,39 @@ if not os.path.exists(save_root):
 all_class = os.listdir(data_root)
 all_class.sort()
 for one_class in all_class:
-    class_root = os.path.join(data_root, one_class, '0_in')
-    all_file = os.listdir(class_root)
-    all_file.sort()
-    # save dir
-    save_class_root = os.path.join(save_root, one_class)
-    if not os.path.exists(save_class_root):
-        os.makedirs(save_class_root)
-    for one_file in tqdm(all_file):
-        file_root = os.path.join(class_root, one_file)
-        save_file_root = os.path.join(
-            save_class_root, one_file.replace('off', 'obj'))
-        # Manifold can only process obj file
-        # so first convert off to obj
-        mesh = trimesh.load(file_root)
-        mesh.export(save_file_root)
-        # Call Manifold!
-        os.system('../Manifold/build/manifold {} {}'.
-                  format(save_file_root, save_file_root))
-        # convert back to off format
-        mesh = trimesh.load(save_file_root)
-        # post-processing
-        if POST:
-            try:
-                mesh = postprocess_mesh(mesh)
-            except ValueError:
-                pass
-        # Manifold may fail to process some meshes
-        # filter out non-watertight meshes
-        if mesh.is_watertight:
-            mesh.export(save_file_root.replace('obj', 'off'))
-        else:  # simply discard them
-            print('Not watertight!')
-            count += 1
-        os.remove(save_file_root)
+    for split in ['train', 'test']:
+        class_root = os.path.join(data_root, one_class, split)
+        all_file = os.listdir(class_root)
+        all_file.sort()
+        # save dir
+        save_class_root = os.path.join(save_root, one_class)
+        if not os.path.exists(save_class_root):
+            os.makedirs(save_class_root)
+        for one_file in tqdm(all_file):
+            file_root = os.path.join(class_root, one_file)
+            save_file_root = os.path.join(
+                save_class_root, one_file.replace('off', 'obj'))
+            # Manifold can only process obj file
+            # so first convert off to obj
+            mesh = trimesh.load(file_root)
+            mesh.export(save_file_root)
+            # Call Manifold!
+            os.system('../Manifold/build/manifold {} {}'.
+                      format(save_file_root, save_file_root))
+            # convert back to off format
+            mesh = trimesh.load(save_file_root)
+            # post-processing
+            if POST:
+                try:
+                    mesh = postprocess_mesh(mesh)
+                except ValueError:
+                    pass
+            # Manifold may fail to process some meshes
+            # filter out non-watertight meshes
+            if mesh.is_watertight:
+                mesh.export(save_file_root.replace('obj', 'off'))
+            else:  # simply discard them
+                print('Not watertight!')
+                count += 1
+            os.remove(save_file_root)
 print('Total {} not watertight'.format(count))
