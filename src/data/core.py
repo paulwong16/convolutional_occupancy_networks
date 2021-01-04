@@ -148,7 +148,7 @@ class Shapes3dDataset(data.Dataset):
             data['pointcloud_crop'] = True
         else:
             info = c_idx
-        
+        print(self.fields)
         for field_name, field in self.fields.items():
             try:
                 field_data = field.load(model_path, idx, info)
