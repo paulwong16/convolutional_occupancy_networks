@@ -7,10 +7,6 @@ data:
   pointcloud_n: 600 # changed from 3000
   pointcloud_noise: 0.005
   points_subsample: 2048
-  pointcloud_order: true
-  pointcloud_rotation: true
-  pointcloud_rot90: true
-  pointcloud_rot90_val: false
   points_file: points.npz
   points_iou_file: points.npz
   voxels_file: null
