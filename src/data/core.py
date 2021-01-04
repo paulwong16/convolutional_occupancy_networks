@@ -153,7 +153,7 @@ class Shapes3dDataset(data.Dataset):
                 field_data = field.load(model_path, idx, info)
             except Exception as e:
                 print(field_name)
-                print('Error: ' + str(e), file=sys.stderr)
+                print(str(e))
                 if self.no_except:
                     logger.warn(
                         'Error occured when loading field %s of model %s'
