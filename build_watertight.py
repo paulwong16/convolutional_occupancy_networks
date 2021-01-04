@@ -59,10 +59,7 @@ for one_class in all_class:
                 continue
             # Manifold can only process obj file
             # so first convert off to obj
-            try:
-                mesh = trimesh.load(file_root)
-            except Exception:
-                print(file_root)
+            mesh = trimesh.load(file_root)
             mesh.export(save_file_root)
             # Call Manifold!
             os.system('../Manifold/build/manifold {} {}'.
