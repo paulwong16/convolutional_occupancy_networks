@@ -1,4 +1,4 @@
-ROOT=.
+ROOT=..
 
 export MESHFUSION_PATH=$ROOT/external/mesh-fusion
 export HDF5_USE_FILE_LOCKING=FALSE # Workaround for NFS mounts
