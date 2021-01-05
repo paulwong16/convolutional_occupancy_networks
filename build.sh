@@ -1,4 +1,4 @@
-source dataset_mn40/config.sh
+source config.sh
 # Make output directories
 mkdir -p $BUILD_PATH
 
