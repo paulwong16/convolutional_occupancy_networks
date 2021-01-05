@@ -65,7 +65,7 @@ for one_class in all_class:
             except Exception:
                 f = open(file_root, "r")
                 data = f.read()
-                data = data.replace('OFF', 'OFF ')
+                data = data.replace('OFF', 'OFF\n')
                 f = open(file_root, "w")
                 f.write(data)
                 f.close()
