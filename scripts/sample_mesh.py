@@ -8,8 +8,8 @@ from multiprocessing import Pool
 from functools import partial
 # TODO: do this better
 sys.path.append('..')
-from im2mesh.utils import binvox_rw, voxels
-from im2mesh.utils.libmesh import check_mesh_contains
+from src.utils import binvox_rw, voxels
+from src.utils.libmesh import check_mesh_contains
 
 
 parser = argparse.ArgumentParser('Sample a watertight mesh.')
