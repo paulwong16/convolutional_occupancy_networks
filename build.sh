@@ -1,4 +1,4 @@
-source ./config.sh
+source /home/malei/zhijie/convolutional_occupancy_networks/config.sh
 # Make output directories
 mkdir -p $BUILD_PATH
 
