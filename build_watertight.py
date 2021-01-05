@@ -63,7 +63,14 @@ for one_class in all_class:
                 mesh = trimesh.load(file_root)
                 mesh.export(save_file_root)
             except Exception:
-                continue
+                f = open(file_root, "r")
+                data = f.read()
+                data = data.replace('OFF', 'OFF ')
+                f = open(file_root, "w")
+                f.write(data)
+                f.close()
+                mesh = trimesh.load(file_root)
+                mesh.export(save_file_root)
             # Call Manifold!
             os.system('../Manifold/build/manifold {} {}'.
                       format(save_file_root, save_file_root))
