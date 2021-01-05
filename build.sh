@@ -1,4 +1,4 @@
-source config.sh
+source ./config.sh
 # Make output directories
 mkdir -p $BUILD_PATH
 
