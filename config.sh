@@ -5,7 +5,7 @@ export HDF5_USE_FILE_LOCKING=FALSE # Workaround for NFS mounts
 
 INPUT_PATH=$ROOT/data/external/MN40
 CHOY2016_PATH=$ROOT/data/external/Choy2016
-BUILD_PATH=$ROOT/data/MN40_watertight
+BUILD_PATH=$ROOT/data/MN40.build
 OUTPUT_PATH=$ROOT/data/MN40_new
 
 NPROC=12
